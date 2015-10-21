@@ -11,6 +11,7 @@ end
 
 get '/home_page' do
   session[:user]
+  @questions = Question.all
   erb :home_page
 end
 
@@ -19,8 +20,13 @@ get '/profile' do
   erb :profile
 end
 
+get '/new_question' do
+  session[:user]
+  erb :new_question
+end
+
 get '/logout' do
-  session.clear
+  session[:user] = nil
   redirect '/'
 end
 
@@ -28,6 +34,13 @@ post '/create_user' do
   User.create(params[:user])
 
   redirect '/' 
+end
+
+post '/create_question' do
+  @checker = session[:user].id
+  Question.create(title: params[:title], user_id: @checker)
+  
+  redirect '/home_page'
 end
 
 post '/login_user' do
@@ -40,4 +53,3 @@ post '/login_user' do
 	redirect '/'
   end
 end
-
