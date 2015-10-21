@@ -1,2 +1,10 @@
 <!DOCTYPE html>
 <h1>Sign Up Page</h1>
+<p>Please Fill in all entries</p>
+<br>
+<form action='/create_user' method='POST'>
+	<p><label>Username:</label><input type='text' name='user[username]'/></p>
+	<p><label>Password:</label><input type='text' name='user[password]'/></p>
+	<br>
+	<input type='submit' value='create'/><a href='/'><input type='button' value='back'/></a>
+</form>

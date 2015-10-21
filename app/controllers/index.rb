@@ -7,4 +7,7 @@ get '/sign_up' do
 end
 
 post '/create_user' do
+	User.create(params[:user])
+
+	redirect '/' 
 end
