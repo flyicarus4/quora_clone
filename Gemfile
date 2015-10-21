@@ -15,6 +15,8 @@ gem 'activerecord'
 
 gem 'rake'
 
+gem 'byebug'
+
 gem 'shotgun'
 
 group :test do
