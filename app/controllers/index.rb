@@ -16,13 +16,22 @@ get '/home_page' do
 end
 
 get '/profile' do
+  @user_id = session[:user].id
   @username = session[:user].username
+  @listing = session[:user].questions
+  byebug
   erb :profile
 end
 
 get '/new_question' do
   session[:user]
   erb :new_question
+end
+
+get '/question' do
+  @user = session[:user].username
+
+  erb :question
 end
 
 get '/logout' do

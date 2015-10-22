@@ -4,6 +4,15 @@
 <a href='/home_page'><input type='button' value='Back'/></a>
 
 <p>username: <%= @username %></p>
+<br>
+<p>list of questions:</p>
+<table>
+	<% @listing.all.each do |t| %>
+	<tr>
+		<td><%= t.title %></td>
+	</tr>
+	<% end %>
+</table>
 
 <form action='/logout' method='GET'>
 	<input type='submit' value='Logout'/>
