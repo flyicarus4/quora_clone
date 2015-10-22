@@ -1,3 +1,20 @@
 <!DOCTYPE html>
 <p>logged in: <%= @user %></p>
 <h1>Question Page</h1>
+<br>
+<table>
+	<tr>
+		<th>Answers:</th>
+	</tr>
+
+	<% @answer.each do |t| %>
+	<tr>
+		<td><%= t.body %></td>
+	</tr>
+	<% end %>
+</table>
+
+<form action='/create_answer' method='POST'>
+<p>answer:<input type='text' name='answer_body'/></p>
+<input type='submit' value='Submit'/>
+</form>

@@ -19,7 +19,6 @@ get '/profile' do
   @user_id = session[:user].id
   @username = session[:user].username
   @listing = session[:user].questions
-  byebug
   erb :profile
 end
 
@@ -30,6 +29,7 @@ end
 
 get '/question' do
   @user = session[:user].username
+  @answer = Answer.all
 
   erb :question
 end
@@ -50,6 +50,12 @@ post '/create_question' do
   Question.create(title: params[:title], user_id: @checker)
   
   redirect '/home_page'
+end
+
+post '/create_answer' do
+	@user = session[:user].id
+	Answer.create(body: params[:answer_body], user_id: @user)
+	redirect '/question'
 end
 
 post '/login_user' do
